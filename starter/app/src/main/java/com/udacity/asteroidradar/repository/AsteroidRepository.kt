@@ -18,6 +18,7 @@ import retrofit2.HttpException
 import timber.log.Timber
 import java.net.SocketException
 import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -101,6 +102,8 @@ class AsteroidRepository(private val database: AsteroidDatabase) {
             Timber.e("SocketException ${e.message}")
         } catch (e: SocketTimeoutException) {
             Timber.e("SocketTimeoutException ${e.message}")
+        } catch (e: UnknownHostException) {
+            Timber.e("UnknownHostException ${e.message}")
         }
     }
 

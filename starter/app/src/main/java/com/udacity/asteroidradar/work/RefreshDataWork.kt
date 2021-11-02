@@ -9,6 +9,7 @@ import retrofit2.HttpException
 import timber.log.Timber
 import java.net.SocketException
 import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 
 class RefreshDataWork(appContext: Context, params: WorkerParameters) :
     CoroutineWorker(appContext, params) {
@@ -28,6 +29,8 @@ class RefreshDataWork(appContext: Context, params: WorkerParameters) :
         } catch (e: SocketException) {
             Result.retry()
         } catch (e: SocketTimeoutException) {
+            Result.retry()
+        } catch (e: UnknownHostException) {
             Result.retry()
         }
     }
